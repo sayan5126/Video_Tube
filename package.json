@@ -1,0 +1,16 @@
+{
+  "name": "chai_backend",
+  "version": "1.0.0",
+  "description": "A backend project",
+  "keywords": [
+    "JavaScript",
+    "Backend"
+  ],
+  "license": "ISC",
+  "author": "Sayan Dan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js"
+  }
+}
