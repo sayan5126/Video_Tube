@@ -17,6 +17,7 @@ const userregister = asyncHandler( async (req , res) => {
     // st->1 get user details from frontend
 
     const { username , email , fullName , password } = req.body
+    console.log(username , email , fullName , password);
 
     // st->2 validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +38,7 @@ const userregister = asyncHandler( async (req , res) => {
 
     // st->3 check if user already exists: username, email
 
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or : [{ username } , { email }]
     })
 
@@ -47,8 +48,16 @@ const userregister = asyncHandler( async (req , res) => {
 
     // st->4 check for images, check for avatar (avatar is required to register , cover image optional)
 
-    const avatarLocalPath = req.files?.avatar[0]?.path;
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    let avatarLocalPath;
+    let coverImageLocalPath;
+    if(req.files && Array.isArray(req.files.avatar) && req.files.avatar.length > 0){
+        avatarLocalPath = req.files.avatar[0].path;
+    }
+    if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
+        coverImageLocalPath = req.files.coverImage[0].path;
+    }
+
+
 
     if(!avatarLocalPath){
         throw new ApiError(400 , "Avatar is required");
