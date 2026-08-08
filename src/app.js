@@ -20,3 +20,13 @@ app.use(express.urlencoded({
 app.use(express.static("public"))
 
 app.use(cookieParser())
+
+
+//ROUTES 
+
+import userRuter from "./routes/user.routes.js";
+
+//routes declaration
+app.use("/api/v1/users" , userRuter)
+// http://localhost:4000/api/v1/users/register
+
