@@ -9,7 +9,7 @@ import { userLogin,
     updateUserAvatar,
     updateUserCoverImage,
     getUserChanelprofile,
-    getWatchHistory} from "../controllers/user.controller.js";
+    getWatchHistory } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router();
