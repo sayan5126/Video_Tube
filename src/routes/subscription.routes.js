@@ -4,7 +4,7 @@ import {
     getUserChannelSubscribers,
     getSubscribedChannels
 } from "../controllers/subscription.controller"
-import { verifyJWT } from "../middlewares/auth.middleware";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router()
 
