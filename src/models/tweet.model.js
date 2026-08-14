@@ -7,8 +7,8 @@ const tweetSchema = new mongoose.Schema({
     },
     content : {
         type : String,
-        required : true
+        required : true,
     }
 }, { timestamps: true })
 
-const Tweet = mongoose.model("Tweet", tweetSchemaSchema)
+const Tweet = mongoose.model("Tweet", tweetSchema)

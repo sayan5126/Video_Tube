@@ -315,7 +315,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
     }
 
     // Delete video document from MongoDB
-    const deletingResponse = await Video.findByIdAndDelete(videoId);
+    await Video.findByIdAndDelete(videoId);
     return res.status(200)
         .json(
             new ApiResponse(
