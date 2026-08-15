@@ -4,17 +4,17 @@ import cookieParser from "cookie-parser";
 export const app = express();
 
 app.use(cors({
-    origin : process.env.CORS_ORIGIN,
-    credentials : true
+    origin: process.env.CORS_ORIGIN,
+    credentials: true
 }))
 
 app.use(express.json({
-    limit : "16kb"        // we accepting data in json formate
+    limit: "16kb"        // we accepting data in json formate
 }))
 
 app.use(express.urlencoded({
-    extended : true,
-    limit : "16kb"
+    extended: true,
+    limit: "16kb"
 }))
 
 app.use(express.static("public"))
@@ -30,14 +30,16 @@ import subscriptionRouter from "./routes/subscription.routes.js"
 import tweetRouter from "./routes/tweet.routes.js"
 import playlistRouter from "./routes/playlist.routes.js"
 import likeRouter from "./routes/like.routes.js"
+import commentRouter from "./routes/comment.routes.js"
 
 //routes declaration
-app.use("/api/v1/users" , userRuter)
-app.use("/api/v1/videos" , videoRouter)
-app.use("/api/v1/subscriptions" , subscriptionRouter)
-app.use("/api/v1/tweets" , tweetRouter)
-app.use("/api/v1/playlists" , playlistRouter)
-app.use("/api/v1/likes" , likeRouter)
+app.use("/api/v1/users", userRuter)
+app.use("/api/v1/videos", videoRouter)
+app.use("/api/v1/subscriptions", subscriptionRouter)
+app.use("/api/v1/tweets", tweetRouter)
+app.use("/api/v1/playlists", playlistRouter)
+app.use("/api/v1/likes", likeRouter)
+app.use("/api/v1/comments", commentRouter)
 
 // http://localhost:4000/api/v1
 
