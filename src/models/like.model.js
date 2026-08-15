@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
-
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 const likeSchema = new mongoose.Schema({
     likedBy : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "User"
+        ref : "User",
+        required : true
     },
-    vedio : {
+    video : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "Video"
     },
@@ -19,4 +20,19 @@ const likeSchema = new mongoose.Schema({
     }
 },{timestamps : true})
 
+likeSchema.plugin(mongooseAggregatePaginate)
+likeSchema.index(
+    { likedBy: 1, video: 1 },
+    { unique: true, sparse: true }
+);
+
+likeSchema.index(
+    { likedBy: 1, comment: 1 },
+    { unique: true, sparse: true }
+);
+
+likeSchema.index(
+    { likedBy: 1, tweet: 1 },
+    { unique: true, sparse: true }
+);
 const Like = mongoose.model("Like" , likeSchema)
